@@ -61,6 +61,17 @@ void	ft_function_int(va_list *list)
 	// printf("%d\n", nb);
 }
 
+// void	ft_function_pointer(va_list *list)
+// {
+// 	char 	*p;
+// 	int 	i;
+
+// 	i = 0;
+// 	p = va_arg(*list, char*);
+// 	while (p[i])
+// 		ft_putchar(p[i++]);
+// }
+
 int 	ft_find(char *str, char c)
 {
 	int i;
@@ -75,10 +86,10 @@ int 	ft_find(char *str, char c)
 	return (-1);
 }
 
-void 	ft_printf(const char *src, ...)
+int 	ft_printf(const char *src, ...)
 {
-	void	(*ft_function[3]) (va_list *);
-	char 	tab[4];
+	void	(*ft_function[4]) (va_list *);
+	char 	tab[5];
 	int 	temp;
 	va_list	list;
 	int 	i;
@@ -88,10 +99,12 @@ void 	ft_printf(const char *src, ...)
 	tab[0] = 's';
 	tab[1] = 'c';
 	tab[2] = 'd';
+	// tab[3] = 'p';
 	tab[3] = 0;
 	ft_function[0] = &ft_function_string;
 	ft_function[1] = &ft_function_char;
 	ft_function[2] = &ft_function_int;
+	// ft_function[3] = &ft_function_pointer;
 	va_start(list, src);
 	while (src[i])
 	{
@@ -105,12 +118,12 @@ void 	ft_printf(const char *src, ...)
 			ft_putchar(src[i]);
 		i++;
 	}
-
+return (1);
 }
 
 int		main()
 {
-	ft_printf("Test %c %s %d\n", 'c', "Salut", 42);
+	ft_printf("Test %s %d\n", "Salut", 42);
 	return (0);
 }
 
