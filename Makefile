@@ -21,7 +21,6 @@ SRCS 		= 	./sources/basic_function.c \
 				./sources/char_pourcent.c \
 				./sources/ft_printf.c \
 				./sources/function_hex_pointer.c \
-				./sources/function_parsing.c \
 				./sources/hex.c \
 				./sources/integer.c \
 				./sources/parsing.c \

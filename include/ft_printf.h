@@ -17,15 +17,20 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include <stdio.h>
+
 //Structure et initialisation
 
 typedef struct 	s_format
 {
 	int 	zero;
-	int 	width;
-	int 	min;
-	int 	prec;
-	int 	count;
+	int		min;
+	int		width;
+	int		prec;
+	int		count;
+	int 	space;
+	int 	hashtag;
+	int 	plus;
 	char	type;
 }				t_format;
 
@@ -83,12 +88,10 @@ void	ft_print(t_format *list, va_list param);
 
 //Fonction pour le parsing 
 
-void	ft_recup_nb_width(const char *src, t_format *list);
-int		ft_parse_width(t_format *list, const char *src, va_list arg);
-void 	ft_recup_nb_prec(const char *src, t_format *list);
-int 	ft_parse_prec(t_format *list, const char *src, va_list arg);
-int 	ft_first_parts(const char *src, t_format *list);
-int		ft_pasrse_flag(t_format *list, const char *src, va_list arg);
+int 	ft_flag(const char *src, va_list arg, t_format *list);
+int			ft_parse_precision(const char *src, va_list arg, t_format *list);
+int			ft_parse_width(const char *src, va_list arg, t_format *list);
+int 	ft_parse_flag(const char *src, t_format *list);
 
 //Fonction principale
 

@@ -2,18 +2,18 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char *print_result(int i, int j)
-{
-    char *  str;
+// char *print_result(int i, int j)
+// {
+//     char *  str;
 
-    if (i == j)
-    {
-        str = "\033[32m*** OK ***\033[0m";
-    }
-    else
-        str = "\033[33m*** KO ***\033[0m";
-    return (str);
-}
+//     if (i == j)
+//     {
+//         str = "\033[32m*** OK ***\033[0m";
+//     }
+//     else
+//         str = "\033[33m*** KO ***\033[0m";
+//     return (str);
+// }
 
 int ft_printf(const char *src, ...);
 
@@ -44,11 +44,10 @@ int main(int argc, char const *argv[])
 	// printf("Z = %d\n", z);
     // printf("T = %d\n", t);
     // printf("G = %d\n", g);
-    char *str = "test";
-    char *print = "|%7d|\n";
+    char *print = "|%0*i|\n";
 
-    int a = ft_printf(print, -14);
-    int b = printf(print, -14);
+    int a = ft_printf(print, -7, -54);
+    int b = printf(print, -7, -54);
     // int i = printf("S6 : %0*.*s\n", 4, 3, "test");
     // int j = ft_printf("S6 : %0*.*s\n", 4, 3, "test");
 

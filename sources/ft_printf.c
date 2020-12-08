@@ -19,6 +19,9 @@ void	list_reset(t_format *list)
 	list->prec = -1;
 	list->width = 0;
 	list->count = 0;
+	list ->space = 0;
+	list->hashtag = 0;
+	list->plus = 0;
 	list->type = '0';
 }
 
@@ -59,11 +62,19 @@ int		ft_printf(const char *src, ...)
 			ft_putchar(src[i]);
 		else
 		{
-			i += ft_pasrse_flag(list, &(src[i + 1]), arg) + 1;
+			// i += ft_flag(list, &(src[i + 1]), arg) + 1;
+			i += ft_flag(&(src[i + 1]), arg, list) + 1;
 			ft_print(list, arg);
 			nb += list->count;
 		}
 	}
+	// 	printf("LIST->MIN == %d\n", list->min);
+	// printf("LIST->ZERO == %d\n", list->zero);
+	// printf("LIST->WIDTH == %d\n", list->width);
+	// printf("LIST->PREC == %d\n", list->prec);
+	// printf("LIST->COUNT == %d\n", list->count);
+	// printf("LIST->TYPE == %c\n", list->type);
+	// printf("NB == %d\n", nb);
 	free(list);
 	va_end(arg);
 	return (nb);
