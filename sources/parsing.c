@@ -43,7 +43,6 @@ int			ft_parse_width(const char *src, va_list arg, t_format *list)
 	i = 0;
 	nb = 0;
 	if (src[i] == '*')
-		
 	{
 		list->width = va_arg(arg, int);
 		i++;
