@@ -35,7 +35,7 @@ int 	ft_parse_flag(const char *src, t_format *list)
 	return (i);
 }
 
-int			ft_parse_width(const char *src, va_list arg, t_format *list)
+int		ft_parse_width(const char *src, va_list arg, t_format *list)
 {
 	int		i;
 	int 	nb;
@@ -62,7 +62,7 @@ int			ft_parse_width(const char *src, va_list arg, t_format *list)
 	return (i);
 }
 
-int			ft_parse_precision(const char *src, va_list arg, t_format *list)
+int		ft_parse_precision(const char *src, va_list arg, t_format *list)
 {
 	int		i;
 	int		nb;
