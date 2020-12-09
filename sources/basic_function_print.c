@@ -14,6 +14,8 @@
 
 void	ft_putchar_list(char c, t_format *list)
 {
+	if (c == '+')
+		list->plus = 0;
 	write(1, &c, 1);
 	list->count += 1;
 }

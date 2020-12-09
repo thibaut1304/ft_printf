@@ -44,10 +44,10 @@ int main(int argc, char const *argv[])
 	// printf("Z = %d\n", z);
     // printf("T = %d\n", t);
     // printf("G = %d\n", g);
-    char *print = "|%0*i|\n";
+    char *print = "|%+-9.1i|\n";
 
-    int a = ft_printf(print, -7, -54);
-    int b = printf(print, -7, -54);
+    int a = ft_printf(print, 10, 54);
+    int b = printf(print, 10, 54);
     // int i = printf("S6 : %0*.*s\n", 4, 3, "test");
     // int j = ft_printf("S6 : %0*.*s\n", 4, 3, "test");
 

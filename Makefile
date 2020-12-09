@@ -28,10 +28,10 @@ SRCS 		= 	./sources/basic_function.c \
 				./sources/string.c \
 				./sources/unsigned.c \
 
-OBJS		=	${SRCS:.c=.o}
+OBJS		=	$(SRCS:.c=.o)
 
 .c.o:
-				$(CC) ${CFLAGS} -c $< -o $(<:.c=.o) ${HEADER}
+				$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) $(HEADER)
 
 all : 			$(NAME)
 
@@ -43,7 +43,9 @@ clean:
 
 fclean:			clean
 				rm -f ${NAME}
-			
+
+bonus:			$(NAME)
+
 re:				fclean	all
 
 .PHONY: 		all clean fclean re

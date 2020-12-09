@@ -18,18 +18,19 @@ int 	ft_parse_flag(const char *src, t_format *list)
 
 	i = 0;
 	while (src[i] == '0' || src[i] == '-'
-	|| src[i] == '+' || src[i] == ' ' || src[i] == '#')
+	|| src[i] == '+' || src[i] == ' ')
 	{
-		if (src[i] == '0')
+		if (src[i] == '0' && !list->min)
 			list->zero = 1;
 		else if (src[i] == '-')
+		{
+			list->zero = 0;
 			list->min = 1;
+		}
 		else if (src[i] == '+')
 			list->plus = 1;
 		else if (src[i] == ' ')
 			list->space = 1;
-		else if (src[i] == '#')
-			list->hashtag = 2;
 		i++;
 	}
 	return (i);

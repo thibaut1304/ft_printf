@@ -12,7 +12,7 @@
 
 #include "../include/ft_printf.h"
 
-int			len_nbr(int nb)
+int		len_nbr(int nb)
 {
 	int				i;
 
@@ -27,7 +27,7 @@ int			len_nbr(int nb)
 	return (i);
 }
 
-void		ft_print_nb(long nb, t_format *list)
+void	ft_print_nb(long nb, t_format *list)
 {
 	if (nb < 0)
 		nb = -nb;
@@ -40,17 +40,48 @@ void		ft_print_nb(long nb, t_format *list)
 		ft_putchar_list(nb + '0', list);
 }
 
-int			check_nb_prec(int nb, t_format *list)
+int		check_nb_prec(int nb, t_format *list)
 {
 	if (list->prec == 0 && nb == 0)
 	{
+		if (list->plus)
+			ft_putchar_list('+', list);
 		ft_putnchar_list(' ', list->width, list);
 		return (1);
 	}
 	return (0);
 }
 
-void		ft_print_integer(t_format *list, va_list param)
+void	ft_print_integer_last(t_format *list, int len, int lengh_official, int nb)
+{
+	if (list->min == 0 && (list->zero == 0 || list->prec != -1))
+	{
+		ft_putnchar_list(' ', list->width - len, list);
+		if (list->plus)
+			ft_putchar_list('+', list);
+	}
+	if (nb < 0)
+		ft_putchar_list('-', list);
+	if (list->zero == 1 && list->prec == -1)
+	{
+		if (list->plus)
+			ft_putchar_list('+', list);
+		ft_putnchar_list('0', list->width - len, list);
+	}
+	if (list->prec > lengh_official && list->prec != -1)
+	{
+		if (list->plus)
+			ft_putchar_list('+', list);
+		ft_putnchar_list('0', list->prec - lengh_official, list);
+	}
+	if (list->min && list->plus)
+		ft_putchar_list('+', list);
+	ft_print_nb(nb, list);
+	if (list->min == 1)
+		ft_putnchar_list(' ', list->width - len, list);
+}
+
+void	ft_print_integer(t_format *list, va_list param)
 {
 	int	nb;
 	int	len;
@@ -64,17 +95,20 @@ void		ft_print_integer(t_format *list, va_list param)
 		len = list->prec;
 	else
 		len = lengh_official;
+	if (list->plus && nb >= 0)
+		list->width--;
 	if (check_nb_prec(nb, list))
+	{
+		if (list->plus && !list->width)
+			ft_putchar_list('+', list);
+		if (list->space && !list->plus)
+			ft_putchar_list(' ', list);
 		return ;
-	if (list->min == 0 && (list->zero == 0 || list->prec != -1))
-		ft_putnchar_list(' ', list->width - len, list);
-	if (nb < 0)
-		ft_putchar_list('-', list);
-	if (list->zero == 1 && list->prec == -1)
-		ft_putnchar_list('0', list->width - len, list);
-	if (list->prec > lengh_official && list->prec != -1)
-		ft_putnchar_list('0', list->prec - lengh_official, list);
-	ft_print_nb(nb, list);
-	if (list->min == 1)
-		ft_putnchar_list(' ', list->width - len, list);
+	}
+	if (list->space && !list->plus && nb >= 0)
+	{
+		list->width--;
+		ft_putchar_list(' ', list);
+	}
+	ft_print_integer_last(list, len, lengh_official, nb);
 }

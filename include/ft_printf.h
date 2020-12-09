@@ -29,7 +29,6 @@ typedef struct 	s_format
 	int		prec;
 	int		count;
 	int 	space;
-	int 	hashtag;
 	int 	plus;
 	char	type;
 }				t_format;
@@ -65,6 +64,7 @@ void	ft_print_string(t_format *list, va_list param);
 int		len_nbr(int nbr);
 void	ft_print_nb(long nb, t_format *list);
 int		check_nb_prec(int nb, t_format *list);
+void	ft_print_integer_last(t_format *list, int len, int lengh_official, int nb);
 void	ft_print_integer(t_format *list, va_list param);
 
 //Fonction pour unsigned 
