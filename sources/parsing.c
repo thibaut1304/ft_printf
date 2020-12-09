@@ -12,7 +12,7 @@
 
 #include "../include/ft_printf.h"
 
-int 	ft_parse_flag(const char *src, t_format *list)
+int		ft_parse_flag(const char *src, t_format *list)
 {
 	int i;
 
@@ -39,7 +39,7 @@ int 	ft_parse_flag(const char *src, t_format *list)
 int		ft_parse_width(const char *src, va_list arg, t_format *list)
 {
 	int		i;
-	int 	nb;
+	int		nb;
 
 	i = 0;
 	nb = 0;
@@ -58,7 +58,7 @@ int		ft_parse_width(const char *src, va_list arg, t_format *list)
 	{
 		list->width *= -1;
 		list->min = 1;
-		list->zero = 0;		
+		list->zero = 0;
 	}
 	return (i);
 }
@@ -90,10 +90,10 @@ int		ft_parse_precision(const char *src, va_list arg, t_format *list)
 	return (i);
 }
 
-int 	ft_flag(const char *src, va_list arg, t_format *list)
+int		ft_flag(const char *src, va_list arg, t_format *list)
 {
-	int 	i;
-	int 	nb;
+	int		i;
+	int		nb;
 
 	nb = 0;
 	i = 0;

@@ -66,13 +66,6 @@ int		ft_printf(const char *src, ...)
 			nb += list->count;
 		}
 	}
-	// printf("LIST->MIN == %d\n", list->min);
-	// printf("LIST->ZERO == %d\n", list->zero);
-	// printf("LIST->WIDTH == %d\n", list->width);
-	// printf("LIST->PREC == %d\n", list->prec);
-	// printf("LIST->PLUS == %d\n", list->plus);
-	// printf("LIST->SPACE == %d\n", list->space);
-	// printf("LIST->TYPE == %c\n", list->type);
 	free(list);
 	va_end(arg);
 	return (nb);

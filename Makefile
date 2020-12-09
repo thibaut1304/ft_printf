@@ -23,6 +23,7 @@ SRCS 		= 	./sources/basic_function.c \
 				./sources/function_hex_pointer.c \
 				./sources/hex.c \
 				./sources/integer.c \
+				./sources/function_integer.c \
 				./sources/parsing.c \
 				./sources/pointeur.c \
 				./sources/string.c \

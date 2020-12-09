@@ -12,34 +12,6 @@
 
 #include "../include/ft_printf.h"
 
-int		len_nbr(int nb)
-{
-	int				i;
-
-	i = 1;
-	if (nb < 0)
-		nb = -nb;
-	while (nb >= 10)
-	{
-		nb = nb / 10;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_print_nb(long nb, t_format *list)
-{
-	if (nb < 0)
-		nb = -nb;
-	if (nb >= 10)
-	{
-		ft_print_nb(nb / 10, list);
-		ft_print_nb(nb % 10, list);
-	}
-	else
-		ft_putchar_list(nb + '0', list);
-}
-
 int		check_nb_prec(int nb, t_format *list)
 {
 	if (list->prec == 0 && nb == 0)
@@ -52,7 +24,8 @@ int		check_nb_prec(int nb, t_format *list)
 	return (0);
 }
 
-void	ft_print_integer_last(t_format *list, int len, int lengh_official, int nb)
+void	ft_print_integer_last(t_format *list, int len,
+		int lengh_official, int nb)
 {
 	if (list->min == 0 && (list->zero == 0 || list->prec != -1))
 	{
@@ -81,6 +54,12 @@ void	ft_print_integer_last(t_format *list, int len, int lengh_official, int nb)
 		ft_putnchar_list(' ', list->width - len, list);
 }
 
+void	ft_space_plus(t_format *list)
+{
+	list->width--;
+	ft_putchar_list(' ', list);
+}
+
 void	ft_print_integer(t_format *list, va_list param)
 {
 	int	nb;
@@ -106,9 +85,6 @@ void	ft_print_integer(t_format *list, va_list param)
 		return ;
 	}
 	if (list->space && !list->plus && nb >= 0)
-	{
-		list->width--;
-		ft_putchar_list(' ', list);
-	}
+		ft_space_plus();
 	ft_print_integer_last(list, len, lengh_official, nb);
 }
