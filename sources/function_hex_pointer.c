@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   untitled                                           :+:      :+:    :+:   */
+/*   function_hex_pointer.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thhusser <thhusser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../include/ft_printf.h"
 
-int			ft_len_nbr_base(long nbr, char *base)
+int			ft_len_nbr_base(long long unsigned nbr, char *base)
 {
 	int		i;
 	int		len_base;
@@ -33,17 +33,17 @@ int			ft_len_nbr_base(long nbr, char *base)
 	return (i);
 }
 
-int			ft_print_nbr_base(long nbr, char *base)
+void		ft_print_nbr_base(long long unsigned nbr, char *base,
+t_format *list)
 {
 	int		len_base;
 
 	len_base = ft_strlen(base);
 	if (nbr >= len_base)
 	{
-		ft_print_nbr_base(nbr / len_base, base);
-		ft_print_nbr_base(nbr % len_base, base);
+		ft_print_nbr_base(nbr / len_base, base, list);
+		ft_print_nbr_base(nbr % len_base, base, list);
 	}
 	else
-		ft_putchar(base[nbr % len_base]);
-	return (ft_len_nbr_base(nbr, base));
+		ft_putchar_list(base[nbr % len_base], list);
 }

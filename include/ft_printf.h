@@ -36,13 +36,14 @@ void			ft_putchar(char c);
 void			ft_putchar_list(char c, t_format *list);
 void			ft_putstr_list(char *str, t_format *list);
 void			ft_putnchar_list(const char c, const int n, t_format *list);
-int				ft_len_nbr_base(long nbr, char *base);
-int				ft_print_nbr_base(long nbr, char *base);
+int				ft_len_nbr_base(long long unsigned nbr, char *base);
+void			ft_print_nbr_base(long long unsigned nbr, char *base,
+			t_format *list);
 void			ft_print_pourcent(t_format *list, va_list param);
 void			ft_print_char(t_format *list, va_list param);
 void			ft_print_string_list(char *str, t_format *list, int len);
 void			ft_print_string(t_format *list, va_list param);
-int				len_nbr(int nbr);
+int				len_nbr(long nbr);
 void			ft_print_nb(long nb, t_format *list);
 int				check_nb_prec(int nb, t_format *list);
 void			ft_print_integer_last(t_format *list, int len,

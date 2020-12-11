@@ -14,9 +14,9 @@
 
 void		ft_print_hex_up_low(t_format *list, va_list param, char *base)
 {
-	unsigned int	nbr;
-	int				len;
-	int				len_hexa;
+	long long unsigned	nbr;
+	long long			len;
+	long long			len_hexa;
 
 	len = 0;
 	nbr = va_arg(param, unsigned int);
@@ -36,7 +36,7 @@ void		ft_print_hex_up_low(t_format *list, va_list param, char *base)
 		ft_putnchar_list('0', list->width - len, list);
 	if (list->prec > len_hexa)
 		ft_putnchar_list('0', list->prec - len_hexa, list);
-	list->count += ft_print_nbr_base(nbr, base);
+	ft_print_nbr_base(nbr, base, list);
 	if (list->min == 1)
 		ft_putnchar_list(' ', list->width - len, list);
 }

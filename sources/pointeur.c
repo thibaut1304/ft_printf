@@ -28,10 +28,10 @@ void	ft_zero(int min, int width, t_format *list)
 
 void	ft_print_pointer(t_format *list, va_list param, char *base)
 {
-	long		nbr;
-	int			len;
+	long long unsigned	nbr;
+	long long			len;
 
-	nbr = (long)va_arg(param, long);
+	nbr = va_arg(param, long long);
 	list->width -= 2;
 	if (list->prec > ft_len_nbr_base(nbr, base))
 		len = list->prec;
@@ -49,7 +49,7 @@ void	ft_print_pointer(t_format *list, va_list param, char *base)
 		ft_putnchar_list('0', list->width - len, list);
 	if (list->prec > ft_len_nbr_base(nbr, base))
 		ft_putnchar_list('0', list->prec - ft_len_nbr_base(nbr, base), list);
-	list->count += ft_print_nbr_base(nbr, base);
+	ft_print_nbr_base(nbr, base, list);
 	if (list->min)
 		ft_putnchar_list(' ', list->width - len, list);
 }

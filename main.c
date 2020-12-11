@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <limits.h>
+
 
 // char *print_result(int i, int j)
 // {
@@ -44,15 +46,24 @@ int main(int argc, char const *argv[])
 	// printf("Z = %d\n", z);
     // printf("T = %d\n", t);
     // printf("G = %d\n", g);
-    char *print = "|%+-9.1i|\n";
+    int nb[] = {INT_MIN, 1000000, -451, -5, 0, -0, 6, 451, 2000000, INT_MAX};
+    int i = 0;
+    while (i <1)
+    {
+        printf ("of_ %05d\n\n", nb[i]);
+        ft_printf ("ft_ %05d\n\n",  nb[i]);
+        i++;
+    }
 
-    int a = ft_printf(print, 10, 54);
-    int b = printf(print, 10, 54);
-    // int i = printf("S6 : %0*.*s\n", 4, 3, "test");
-    // int j = ft_printf("S6 : %0*.*s\n", 4, 3, "test");
+    // char *print = "|%.20d|\n";
 
-    printf("ft_printf == %d\n", a);
-    printf("   printf == %d\n", b);
+    // int a = ft_printf(print, 10);
+    // int b = printf(print, 10);
+    // // int i = printf("S6 : %0*.*s\n", 4, 3, "test");
+    // // int j = ft_printf("S6 : %0*.*s\n", 4, 3, "test");
+
+    // printf("ft_printf == %d\n", a);
+    // printf("   printf == %d\n", b);
 
 	return 0;
 }

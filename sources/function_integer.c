@@ -12,7 +12,7 @@
 
 #include "../include/ft_printf.h"
 
-int		len_nbr(int nb)
+int		len_nbr(long nb)
 {
 	int				i;
 

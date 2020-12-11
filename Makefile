@@ -32,7 +32,7 @@ SRCS 		= 	./sources/basic_function.c \
 OBJS		=	$(SRCS:.c=.o)
 
 .c.o:
-				$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) $(HEADER)
+				$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all : 			$(NAME)
 
